@@ -28,7 +28,7 @@ public class ResponseDTO<T> {
         this.message=message;
         this.result=result;
     }
-
+  
     public ResponseDTO(T result) {
         this.result = result;
     }
