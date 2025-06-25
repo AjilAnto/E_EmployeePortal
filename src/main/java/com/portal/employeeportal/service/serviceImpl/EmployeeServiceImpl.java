@@ -1,11 +1,11 @@
 package com.portal.employeeportal.service.serviceImpl;
 
-import com.portal.employeeportal.dto.request.AddressRequestDto;
 import com.portal.employeeportal.dto.request.EmployeeRequestDto;
 import com.portal.employeeportal.dto.response.EmployeeResponseDto;
 import com.portal.employeeportal.entity.Address;
 import com.portal.employeeportal.entity.Employee;
-import com.portal.employeeportal.repository.*;
+import com.portal.employeeportal.exception.ItemNotFoundException;
+import com.portal.employeeportal.repository.EmployeeRepoitory;
 import com.portal.employeeportal.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -55,6 +55,17 @@ public class EmployeeServiceImpl implements EmployeeService {
             return employeeResponseDto;
         }catch (Exception e){
             throw new Exception(e.getMessage());
+        }
+    }
+
+    @Override
+    public Boolean removeEmployee(Long employeeId) {
+        if (employeeRepoitory.existsById(employeeId)) {
+            employeeRepoitory.deleteById(employeeId);
+            employeeRepoitory.flush();
+            return !employeeRepoitory.existsById(employeeId);
+        } else {
+            throw new ItemNotFoundException("employee doesn't exists, please try again with valid employeeId");
         }
     }
 }

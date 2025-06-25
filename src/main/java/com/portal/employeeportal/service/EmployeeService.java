@@ -9,4 +9,6 @@ public interface EmployeeService {
 
     EmployeeResponseDto saveEmployee(EmployeeRequestDto employeeRequestDto) throws Exception;
 
+    Boolean removeEmployee(Long employeeId);
+
 }

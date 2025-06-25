@@ -1,6 +1,5 @@
 package com.portal.employeeportal.entity;
 
-import com.portal.employeeportal.dto.request.AddressRequestDto;
 import jakarta.persistence.*;
 import lombok.Data;
 
