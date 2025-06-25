@@ -1,19 +1,15 @@
 package com.portal.employeeportal.controller;
 
 import com.portal.employeeportal.dto.request.EmployeeRequestDto;
-import com.portal.employeeportal.dto.response.*;
+import com.portal.employeeportal.dto.response.ResponseDTO;
 import com.portal.employeeportal.exception.BadRequestException;
-import com.portal.employeeportal.service.*;
+import com.portal.employeeportal.service.EmployeeService;
 import io.micrometer.common.util.StringUtils;
-import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
 
 
 /**
