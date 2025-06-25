@@ -16,4 +16,9 @@ public class AddressResponseDto {
     private String laneTwo;
     private String landMark;
     private String zipCode;
+
+    public AddressResponseDto(String houseName, String zipCode) {
+        this.houseName=houseName;
+        this.zipCode=zipCode;
+    }
 }

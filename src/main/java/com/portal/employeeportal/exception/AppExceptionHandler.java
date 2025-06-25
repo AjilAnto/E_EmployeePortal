@@ -26,7 +26,6 @@ public class AppExceptionHandler {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(responseDTO);
     }
 
-
     @ExceptionHandler({BadRequestException.class,ItemNotFoundException.class, ConstraintViolationException.class})
     public ResponseEntity<ResponseDTO<Object>> handleCustomExceptions(Exception e, WebRequest webRequest) {
         ResponseDTO<Object> responseDTO = ResponseDTO
