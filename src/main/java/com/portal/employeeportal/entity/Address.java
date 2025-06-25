@@ -25,4 +25,6 @@ public class Address {
     @JoinColumn(name = "employee_id")
     private Employee employee;
 
+    private Boolean isActive;
+
 }

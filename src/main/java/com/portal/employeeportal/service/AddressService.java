@@ -9,4 +9,6 @@ import java.util.List;
 public interface AddressService {
 
     List<AddressResponseDto> fetchAddressListByEmployeeId(Long employeeId);
+
+    Boolean disableAddressesByIds(List<Long> addressIds);
 }
