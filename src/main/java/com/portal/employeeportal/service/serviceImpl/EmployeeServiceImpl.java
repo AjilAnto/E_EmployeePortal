@@ -13,7 +13,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-import utility.LoggerManager;
+import com.portal.employeeportal.utility.LoggerManager;
 
 import java.util.List;
 import java.util.Objects;
