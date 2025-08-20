@@ -1,6 +1,6 @@
 package com.portal.employeeportal.service.serviceImpl;
 
-import com.portal.employeeportal.dto.request.EmployeeRequestDto;
+import com.portal.employeeportal.dto.request.EmployeeRequestRecord;
 import com.portal.employeeportal.dto.response.EmployeeResponseDto;
 import com.portal.employeeportal.entity.Address;
 import com.portal.employeeportal.entity.Employee;
@@ -9,11 +9,11 @@ import com.portal.employeeportal.exception.ItemNotFoundException;
 import com.portal.employeeportal.fuctional.EmployeeFunctional;
 import com.portal.employeeportal.repository.EmployeeRepository;
 import com.portal.employeeportal.service.EmployeeService;
+import com.portal.employeeportal.utility.LoggerManager;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-import com.portal.employeeportal.utility.LoggerManager;
 
 import java.util.List;
 import java.util.Objects;
@@ -32,21 +32,21 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Transactional
     @Override
-    public EmployeeResponseDto saveEmployee(EmployeeRequestDto employeeRequestDto) {
+    public EmployeeResponseDto saveEmployee(EmployeeRequestRecord employeeRequestRecord) {
         LoggerManager.infoLogger("inside saveEmployee", this.getClass());
         try {
             EmployeeResponseDto employeeResponseDto = new EmployeeResponseDto();
-            if (Objects.nonNull(employeeRequestDto)) {
+            if (Objects.nonNull(employeeRequestRecord)) {
                 Employee employee = new Employee();
-                if (EmployeeFunctional.isEmployeeNameValid(employeeRequestDto.getName())) {
-                    employee.setName(employeeRequestDto.getName());
+                if (EmployeeFunctional.isEmployeeNameValid(employeeRequestRecord.name())) {
+                    employee.setName(employeeRequestRecord.name());
                 } else throw new BadRequestException("name can't contain Special characters");
-                if (EmployeeFunctional.isAgeValid(employeeRequestDto.getAge())) {
-                    employee.setAge(employeeRequestDto.getAge());
+                if (EmployeeFunctional.isAgeValid(employeeRequestRecord.age())) {
+                    employee.setAge(employeeRequestRecord.age());
                 } else throw new BadRequestException("please try with valid age, " +
                         "age should be greater than 18 and less than 100");
-                employee.setDesignation(employeeRequestDto.getDesignation());
-                List<Address> addressList = employeeRequestDto.getAddressRequestDtoList()
+                employee.setDesignation(employeeRequestRecord.designation());
+                List<Address> addressList = employeeRequestRecord.addressRequestDtoList()
                         .stream().map(addressRequestDto ->
                             modelMapper.map(addressRequestDto,Address.class)).toList();
 
