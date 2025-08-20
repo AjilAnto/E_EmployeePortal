@@ -1,6 +1,6 @@
 package com.portal.employeeportal.controller;
 
-import com.portal.employeeportal.dto.request.EmployeeRequestDto;
+import com.portal.employeeportal.dto.request.EmployeeRequestRecord;
 import com.portal.employeeportal.dto.response.ResponseDTO;
 import com.portal.employeeportal.exception.BadRequestException;
 import com.portal.employeeportal.service.EmployeeService;
@@ -25,8 +25,8 @@ public class EmployeeController {
     EmployeeService employeeService;
 
     @PostMapping("/addEmployee")
-    public ResponseEntity<ResponseDTO<Object>> addEmployee(@Valid @RequestBody EmployeeRequestDto employeeRequestDto) throws Exception {
-        return ResponseEntity.ok(new ResponseDTO<>("employee saved successfully", employeeService.saveEmployee(employeeRequestDto)));
+    public ResponseEntity<ResponseDTO<Object>> addEmployee(@Valid @RequestBody EmployeeRequestRecord employeeRequestRecord) throws Exception {
+        return ResponseEntity.ok(new ResponseDTO<>("employee saved successfully", employeeService.saveEmployee(employeeRequestRecord)));
     }
 
     @DeleteMapping("/deleteEmployee")

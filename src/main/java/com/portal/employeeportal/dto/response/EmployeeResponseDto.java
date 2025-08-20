@@ -1,9 +1,7 @@
 package com.portal.employeeportal.dto.response;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.portal.employeeportal.dto.request.AddressRequestDto;
 import com.portal.employeeportal.entity.Address;
 import lombok.AllArgsConstructor;
 import lombok.Data;
